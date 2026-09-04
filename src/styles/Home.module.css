@@ -1,5 +1,6 @@
 .container {
   padding: 0 2rem;
+  background: #FFF8F5;
 }
 
 .main {
@@ -21,6 +22,8 @@
   border-top: 1px solid #FFE5E0;
   justify-content: center;
   align-items: center;
+  background: #FFE5E0;
+  color: #333333;
 }
 
 .footer a {
@@ -28,6 +31,7 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  color: #333333;
 }
 
 .title a {
@@ -57,6 +61,7 @@
   line-height: 1.5;
   font-size: 1.5rem;
   color: #333333;
+  background: #FFE5E0;
 }
 
 .code {
@@ -82,33 +87,34 @@
   margin: 1rem;
   padding: 1.5rem;
   text-align: left;
-  color: inherit;
+  color: #FFFFFF;
   text-decoration: none;
-  border: 1px solid #FFE5E0;
+  border: 1px solid #D62828;
   border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
   width: 45%;
-  background: #FFE5E0;
+  background: #D62828;
 }
 
 .card:hover,
 .card:focus,
 .card:active {
-  color: #D62828;
-  border-color: #D62828;
+  color: #FFFFFF;
+  border-color: #7A1010;
+  background: #7A1010;
 }
 
 .card h2 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
-  color: #7A1010;
+  color: #FFFFFF;
 }
 
 .card p {
   margin: 0;
   font-size: 1.25rem;
   line-height: 1.5;
-  color: #333333;
+  color: #FFFFFF;
 }
 
 .logo {
@@ -121,3 +127,4 @@
     flex-direction: column;
   }
 }
+
