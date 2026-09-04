@@ -69,6 +69,30 @@ const benefits = [
   "Envio para todo o país",
 ];
 
+const featuredLooks = [
+  {
+    title: "Vestido Elegante Aurora",
+    description: "Silhueta fluida com recortes estratégicos e brilho sutil em fio dourado.",
+    tag: "Preview feminino",
+    price: "R$ 890",
+    tone: "warmLook",
+  },
+  {
+    title: "Camisa Premium Noir",
+    description: "Algodão egípcio acetinado, gola estruturada e botões em madrepérola escura.",
+    tag: "Preview masculino",
+    price: "R$ 620",
+    tone: "neutralLook",
+  },
+  {
+    title: "Conjunto Casual Urbano",
+    description: "Jaqueta minimalista e calça reta em alfaiataria leve para dias versáteis.",
+    tag: "Lançamento cápsula",
+    price: "R$ 1.150",
+    tone: "darkLook",
+  },
+];
+
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -165,6 +189,33 @@ export default function Home() {
               <li key={benefit}>✓ {benefit}</li>
             ))}
           </ul>
+        </section>
+
+        <section className={styles.lookbook}>
+          <div className={styles.sectionHeader}>
+            <h2>Preview da coleção</h2>
+            <p>Visualize combinações exclusivas com alfaiataria contemporânea e acabamentos de alto padrão.</p>
+          </div>
+          <div className={styles.lookbookGrid}>
+            {featuredLooks.map((look) => (
+              <article key={look.title} className={`${styles.lookbookCard} ${styles[look.tone]}`}>
+                <div className={styles.lookbookMedia}>
+                  <span className={styles.lookbookTag}>{look.tag}</span>
+                  <div className={styles.lookbookTexture}></div>
+                </div>
+                <div className={styles.lookbookDetails}>
+                  <h3>{look.title}</h3>
+                  <p>{look.description}</p>
+                  <div className={styles.lookbookMeta}>
+                    <span className={styles.lookbookPrice}>{look.price}</span>
+                    <a href="#produtos" className={styles.cardButton}>
+                      COMPRAR AGORA
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className={styles.ctaBanner}>

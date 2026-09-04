@@ -429,6 +429,117 @@
   border: 1px solid rgba(201, 168, 106, 0.25);
 }
 
+.lookbook {
+  background: linear-gradient(135deg, #FFFFFF, #F9F5EF);
+  border-radius: 30px;
+  padding: 2.5rem;
+  border: 1px solid #E7DCC7;
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.06);
+}
+
+.lookbookGrid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.lookbookCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  border-radius: 26px;
+  background: #FCF8F2;
+  border: 1px solid rgba(31, 26, 23, 0.08);
+  box-shadow: 0 20px 45px rgba(15, 13, 10, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.lookbookCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+}
+
+.lookbookMedia {
+  position: relative;
+  height: 220px;
+  border-radius: 22px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, #D9C8B6, #B89E86);
+}
+
+.warmLook .lookbookMedia {
+  background: linear-gradient(135deg, #F3DBCB, #CDA680);
+}
+
+.neutralLook .lookbookMedia {
+  background: linear-gradient(135deg, #E6E2DD, #B8B3AC);
+}
+
+.darkLook .lookbookMedia {
+  background: linear-gradient(135deg, #2B2621, #4F4033);
+}
+
+.lookbookTag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(248, 243, 235, 0.9);
+  color: #4B3A29;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(31, 26, 23, 0.08);
+}
+
+.lookbookTexture {
+  position: absolute;
+  inset: 12%;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.55), transparent 65%);
+  mix-blend-mode: screen;
+  opacity: 0.8;
+}
+
+.lookbookDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.lookbookDetails h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #1F1A17;
+}
+
+.lookbookDetails p {
+  margin: 0;
+  color: #4B443B;
+}
+
+.lookbookMeta {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.lookbookPrice {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #C49E60;
+}
+
 .ctaBanner {
   background: linear-gradient(135deg, #1F1A17, #46372A);
   border-radius: 30px;
@@ -506,5 +617,9 @@
 
   .benefitsList {
     grid-template-columns: 1fr;
+  }
+
+  .lookbookMedia {
+    height: 180px;
   }
 }
