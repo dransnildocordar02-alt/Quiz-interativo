@@ -4,56 +4,56 @@ import styles from "@/styles/Home.module.css";
 
 const productCategories = [
   {
-    icon: "👗",
+    icon: "VL",
     title: "Vestidos",
     description: "Modelagens midi e longas, com acabamentos impecáveis para ocasiões sofisticadas.",
     highlight: "Vestido Elegante em renda francesa",
     style: "dresses",
   },
   {
-    icon: "👔",
+    icon: "CP",
     title: "Camisas",
     description: "Camisas premium com cortes estruturados e tecidos suaves para um visual impecável.",
     highlight: "Camisa Premium em algodão egípcio",
     style: "shirts",
   },
   {
-    icon: "🩱",
+    icon: "BM",
     title: "Blusas",
     description: "Blusas modernas com detalhes minimalistas e cores neutras para combinar com tudo.",
     highlight: "Blusa Moderna com decote assimétrico",
     style: "tops",
   },
   {
-    icon: "👖",
+    icon: "CA",
     title: "Calças",
     description: "Calças de alfaiataria com caimento perfeito e versatilidade do trabalho ao jantar.",
     highlight: "Calça de Alfaiataria em linho",
     style: "pants",
   },
   {
-    icon: "🧥",
+    icon: "CJ",
     title: "Conjuntos",
     description: "Coordenados elegantes que facilitam o look completo com harmonia e estilo.",
     highlight: "Conjunto Casual com acabamento acetinado",
     style: "sets",
   },
   {
-    icon: "💃",
+    icon: "MF",
     title: "Moda feminina",
     description: "Curadoria feminina com peças statement, casacos estruturados e vestidos icônicos.",
     highlight: "Conjunto Feminino com recortes precisos",
     style: "women",
   },
   {
-    icon: "🕴️",
+    icon: "MM",
     title: "Moda masculina",
     description: "Costuras precisas, camisas italianas e blazers com toque contemporâneo.",
     highlight: "Camisa Premium com punho duplo",
     style: "men",
   },
   {
-    icon: "⌚",
+    icon: "AC",
     title: "Acessórios",
     description: "Bolsas, cintos e joias minimalistas para finalizar qualquer produção com sofisticação.",
     highlight: "Pulseira com detalhes dourados",
@@ -106,16 +106,17 @@ export default function Home() {
           <div className={styles.heroIllustration}>
             <div className={styles.heroBubbleOne}></div>
             <div className={styles.heroBubbleTwo}></div>
-            <div className={styles.heroToy}>
-              <span role="img" aria-label="vestido">
-                👗
-              </span>
-              <span role="img" aria-label="bolsa premium">
-                👜
-              </span>
-              <span role="img" aria-label="relógio sofisticado">
-                ⌚
-              </span>
+            <div className={styles.heroShowcase}>
+              <div className={styles.lookCard}>
+                <p className={styles.lookSeason}>Coleção Signature</p>
+                <h3>Conjunto Tailleur</h3>
+                <p className={styles.lookDetails}>Alfaiataria precisa, toque acetinado e caimento impecável.</p>
+                <span className={styles.lookPrice}>R$ 1.290</span>
+              </div>
+              <div className={styles.lookHighlight}>
+                <p>Curadoria Premium</p>
+                <strong>Camadas que traduzem sofisticação cotidiana</strong>
+              </div>
             </div>
           </div>
         </section>

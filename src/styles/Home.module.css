@@ -176,19 +176,69 @@
   left: 50px;
 }
 
-.heroToy {
+.heroShowcase {
   position: relative;
   z-index: 1;
   display: flex;
-  gap: 1.5rem;
-  font-size: 3.5rem;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 320px;
+  color: #F8F3EB;
 }
 
-.heroToy span {
+.lookCard {
   background: rgba(255, 255, 255, 0.08);
-  padding: 0.4rem 0.6rem;
-  border-radius: 16px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 1.5rem;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 15px 30px rgba(5, 4, 3, 0.45);
+}
+
+.lookSeason {
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4rem;
+  font-size: 0.75rem;
+  color: #E4C083;
+}
+
+.lookCard h3 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.lookDetails {
+  margin: 0.5rem 0 0;
+  color: rgba(248, 243, 235, 0.85);
+}
+
+.lookPrice {
+  display: inline-flex;
+  margin-top: 1rem;
+  font-weight: 700;
+  color: #F4D6A0;
+}
+
+.lookHighlight {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(201, 168, 106, 0.25));
+  border-radius: 24px;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+.lookHighlight p {
+  margin: 0;
+  color: rgba(248, 243, 235, 0.75);
+}
+
+.lookHighlight strong {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 1.1rem;
+  color: #FFFFFF;
 }
 
 .offer {
@@ -263,7 +313,17 @@
 }
 
 .cardIcon {
-  font-size: 2rem;
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(31, 26, 23, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #2B2119;
 }
 
 .card h3 {
