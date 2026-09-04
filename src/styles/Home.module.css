@@ -1,6 +1,8 @@
 .container {
   padding: 0 2rem;
   background: #FFFDF5;
+  background-image: radial-gradient(circle at 25% 20%, rgba(255, 212, 59, 0.25), transparent 45%), radial-gradient(circle at 80% 0%, rgba(77, 150, 255, 0.18), transparent 45%);
+  background-repeat: no-repeat;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,13 +24,14 @@
 .hero {
   display: flex;
   gap: 3rem;
-  background: linear-gradient(135deg, #FFFDF5, #FFEFC1);
+  background: linear-gradient(135deg, #FFFDF5 0%, #FFE8A3 45%, #FFD43B 90%);
   border-radius: 32px;
   padding: 3rem;
   align-items: center;
   position: relative;
   overflow: hidden;
   box-shadow: 0 25px 60px rgba(77, 150, 255, 0.15);
+  border: 4px solid #FFEFC1;
 }
 
 .heroContent {
@@ -40,8 +43,8 @@
   display: inline-flex;
   padding: 0.4rem 1rem;
   border-radius: 999px;
-  background: rgba(77, 150, 255, 0.15);
-  color: #4D96FF;
+  background: rgba(255, 92, 92, 0.15);
+  color: #FF5C5C;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
@@ -55,7 +58,7 @@
 
 .subtitle {
   font-size: 1.2rem;
-  color: #4A4A4A;
+  color: #6B5B2A;
   margin-bottom: 1.5rem;
 }
 
@@ -67,19 +70,19 @@
 }
 
 .primaryButton {
-  background: #FF5C5C;
+  background: linear-gradient(135deg, #FF5C5C, #FF8C64);
   color: #FFFDF5;
   padding: 0.9rem 1.8rem;
   border-radius: 999px;
   font-weight: 700;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 15px 30px rgba(255, 92, 92, 0.35);
+  box-shadow: 0 15px 30px rgba(255, 92, 92, 0.45);
 }
 
 .primaryButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 18px 32px rgba(255, 92, 92, 0.45);
+  box-shadow: 0 18px 36px rgba(255, 92, 92, 0.55);
 }
 
 .secondaryButton {
@@ -89,7 +92,8 @@
   border-radius: 999px;
   font-weight: 700;
   text-decoration: none;
-  background: rgba(77, 150, 255, 0.1);
+  background: rgba(77, 150, 255, 0.15);
+  box-shadow: 0 12px 26px rgba(77, 150, 255, 0.25);
 }
 
 .heroBadges {
@@ -103,16 +107,24 @@
   font-weight: 600;
 }
 
+.heroBadges li {
+  background: rgba(255, 253, 245, 0.9);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+}
+
 .heroIllustration {
   flex: 0.9;
   min-height: 320px;
   border-radius: 26px;
-  background: linear-gradient(135deg, #4D96FF, #6BCB77);
+  background: linear-gradient(135deg, #4D96FF, #6BCB77, #FFD43B);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  border: 4px solid #FFFDF5;
+  box-shadow: 0 20px 45px rgba(77, 150, 255, 0.35);
 }
 
 .heroBubbleOne,
@@ -138,6 +150,31 @@
   right: 30px;
 }
 
+.heroIllustration::before,
+.heroIllustration::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+  mix-blend-mode: screen;
+}
+
+.heroIllustration::before {
+  width: 160px;
+  height: 160px;
+  background: rgba(255, 92, 92, 0.35);
+  top: 30px;
+  right: 40px;
+}
+
+.heroIllustration::after {
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 253, 245, 0.5);
+  bottom: 40px;
+  left: 50px;
+}
+
 .heroToy {
   position: relative;
   z-index: 1;
@@ -146,8 +183,15 @@
   font-size: 3.5rem;
 }
 
+.heroToy span {
+  background: rgba(255, 253, 245, 0.25);
+  padding: 0.4rem 0.6rem;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
 .offer {
-  background: #FFD43B;
+  background: linear-gradient(135deg, #FFD43B, #FFEA8A);
   border-radius: 28px;
   padding: 2.5rem;
   display: flex;
@@ -155,7 +199,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  box-shadow: 0 25px 60px rgba(255, 212, 59, 0.35);
+  box-shadow: 0 25px 60px rgba(255, 212, 59, 0.4);
+  border: 3px dashed #FFF5CC;
 }
 
 .offerContent {
@@ -172,6 +217,10 @@
 
 .products {
   background: #FFFDF5;
+  padding: 2.5rem;
+  border-radius: 32px;
+  box-shadow: 0 30px 60px rgba(77, 150, 255, 0.08);
+  border: 3px solid #FFEFC1;
 }
 
 .sectionHeader h2 {
@@ -202,6 +251,13 @@
   gap: 0.75rem;
   min-height: 260px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 28px 50px rgba(0, 0, 0, 0.12);
 }
 
 .cardIcon {
@@ -229,7 +285,7 @@
   align-self: flex-start;
   padding: 0.7rem 1.4rem;
   border-radius: 999px;
-  background: rgba(255, 253, 245, 0.2);
+  background: rgba(255, 253, 245, 0.35);
   color: #FFFFFF;
   font-weight: 600;
   text-decoration: none;
@@ -261,7 +317,7 @@
 }
 
 .benefits {
-  background: #FFFFFF;
+  background: linear-gradient(135deg, #FFFFFF, #FFF5DD);
   border-radius: 28px;
   padding: 2.5rem;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
@@ -278,6 +334,13 @@
   color: #4A4A4A;
 }
 
+.benefitsList li {
+  background: rgba(255, 253, 245, 0.9);
+  padding: 0.9rem 1rem;
+  border-radius: 18px;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.04);
+}
+
 .ctaBanner {
   background: linear-gradient(135deg, #4D96FF, #6BCB77);
   border-radius: 30px;
@@ -288,6 +351,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+  box-shadow: 0 25px 60px rgba(77, 150, 255, 0.25);
 }
 
 .ctaTag {
@@ -300,8 +364,8 @@
 .footer {
   padding: 2rem;
   text-align: center;
-  border-top: 2px dashed rgba(255, 92, 92, 0.4);
-  background: #FFF5DC;
+  border-top: 2px dashed rgba(255, 92, 92, 0.5);
+  background: #FFF0C2;
   color: #5A3A00;
 }
 

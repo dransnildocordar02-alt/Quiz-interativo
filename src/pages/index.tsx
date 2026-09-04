@@ -6,43 +6,43 @@ const productCategories = [
   {
     icon: "🧸",
     title: "Pelúcias abraçáveis",
-    description: "Ursinhos, unicórnios e personagens suaves para acompanhar cada cochilo.",
-    highlight: "A partir de R$ 59,90",
+    description: "Ursinhos arco-íris, unicórnios cintilantes e amigos fofinhos para acompanhar cada abraço.",
+    highlight: "Coleção abraço quentinho",
     style: "plush",
   },
   {
     icon: "🚗",
     title: "Carrinhos velozes",
-    description: "Modelos esportivos, pistas coloridas e miniaturas com luz e som.",
-    highlight: "Coleções exclusivas",
+    description: "Corridas neon, pistas magnéticas e mini motores para quem ama velocidade.",
+    highlight: "Pistas com luzes LED",
     style: "cars",
   },
   {
     icon: "🧩",
     title: "Jogos e quebra-cabeças",
-    description: "Desafios criativos para estimular memória, lógica e trabalho em equipe.",
-    highlight: "Novos lançamentos",
+    description: "Peças gigantes, desafios progressivos e puzzles 3D para brincar aprendendo.",
+    highlight: "Dificuldades por idade",
     style: "puzzles",
   },
   {
     icon: "🎨",
     title: "Brinquedos educativos",
-    description: "Blocos de montar, pinturas mágicas e experimentos cheios de descobertas.",
-    highlight: "Favoritos das escolas",
+    description: "Laboratórios criativos, blocos sensoriais e tintas laváveis para pequenas grandes descobertas.",
+    highlight: "Aprender brincando",
     style: "educational",
   },
   {
     icon: "👧",
     title: "Brinquedos para meninas",
-    description: "Casas de boneca, acessórios fashion e kits de histórias encantadas.",
-    highlight: "Kits personalizados",
+    description: "Bonecas articuladas, salões de fantasia e kits para criar histórias encantadas.",
+    highlight: "Looks trocáveis",
     style: "girls",
   },
   {
     icon: "👦",
     title: "Brinquedos para meninos",
-    description: "Super-heróis, jogos de aventura e ferramentas para imaginação sem limites.",
-    highlight: "Diversão garantida",
+    description: "Heróis articuláveis, sets de missão e gadgets para explorar cada aventura.",
+    highlight: "Missões colecionáveis",
     style: "boys",
   },
 ];
@@ -62,7 +62,7 @@ export default function Home() {
         <title>Mundo da Diversão | Loja de Brinquedos Infantis</title>
         <meta
           name="description"
-          content="Brinquedos divertidos, educativos e cheios de cores para transformar cada momento em alegria."
+          content="Loja de brinquedos infantis com pelúcias, carrinhos, jogos educativos e ofertas especiais o ano todo."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -70,7 +70,7 @@ export default function Home() {
       <main className={styles.main}>
         <section className={styles.hero}>
           <div className={styles.heroContent}>
-            <p className={styles.tag}>Coleção Colorida 2024</p>
+            <p className={styles.tag}>Coleção Encantada 2024</p>
             <h1>Brinquedos que transformam momentos em diversão! 🎁</h1>
             <p className={styles.subtitle}>
               Encontre brinquedos divertidos, educativos e criativos para deixar a brincadeira ainda mais especial.
@@ -84,9 +84,9 @@ export default function Home() {
               </a>
             </div>
             <ul className={styles.heroBadges}>
-              <li>Entrega rápida</li>
-              <li>Presentes personalizados</li>
-              <li>Frete para todo o Brasil</li>
+              <li>Brincadeiras para todas as idades</li>
+              <li>Embalagens prontas para presente</li>
+              <li>Sugestões personalizadas</li>
             </ul>
           </div>
           <div className={styles.heroIllustration}>
@@ -111,8 +111,8 @@ export default function Home() {
             <p className={styles.offerTag}>OFERTA ESPECIAL 🎉</p>
             <h2>Brinquedos selecionados com preços especiais por tempo limitado!</h2>
             <p>
-              Combine educação e diversão com kits criativos, pelúcias exclusivas e carrinhos cheios de energia. Estoque
-              limitado para aproveitar agora mesmo!
+              Descubra kits com pelúcias limitadas, oficinas criativas e carrinhos turbo. Estoque colorido válido apenas
+              durante a semana de lançamento!
             </p>
           </div>
           <a href="#produtos" className={styles.primaryButton}>
@@ -122,8 +122,8 @@ export default function Home() {
 
         <section id="produtos" className={styles.products}>
           <div className={styles.sectionHeader}>
-            <h2>Categorias para todas as brincadeiras</h2>
-            <p>Escolha o universo que mais combina com a imaginação das crianças.</p>
+            <h2>Universos incríveis para cada brincadeira</h2>
+            <p>Do aconchego das pelúcias às aventuras sobre rodas, escolha o que desperta mais sorrisos.</p>
           </div>
           <div className={styles.grid}>
             {productCategories.map((category) => (
@@ -142,8 +142,8 @@ export default function Home() {
 
         <section className={styles.benefits}>
           <div className={styles.sectionHeader}>
-            <h2>Por que escolher a nossa loja?</h2>
-            <p>Um universo de alegria pensado para surpreender crianças e famílias.</p>
+            <h2>Benefícios que encantam famílias</h2>
+            <p>Cuidamos de cada detalhe para que a experiência de compra seja tão divertida quanto brincar.</p>
           </div>
           <ul className={styles.benefitsList}>
             {benefits.map((benefit) => (
@@ -154,9 +154,9 @@ export default function Home() {
 
         <section className={styles.ctaBanner}>
           <div>
-            <p className={styles.ctaTag}>Diversão garantida</p>
-            <h2>Pronto para encher o dia de cor e criatividade?</h2>
-            <p>Garanta já brinquedos cheios de personalidade com entrega rápida e compra segura.</p>
+            <p className={styles.ctaTag}>Brincadeira nonstop</p>
+            <h2>Encha o carrinho com os brinquedos mais desejados do momento</h2>
+            <p>Escolha modelos exclusivos, receba rápido e surpreenda com presentes cheios de magia.</p>
           </div>
           <a href="#produtos" className={styles.primaryButton}>
             QUERO MEU BRINQUEDO 🎁
@@ -164,8 +164,8 @@ export default function Home() {
         </section>
       </main>
       <footer className={styles.footer}>
-        <p>© {new Date().getFullYear()} Mundo da Diversão - Loja de Brinquedos Infantis.</p>
-        <p>Colorindo memórias com brinquedos educativos, criativos e seguros.</p>
+        <p>© {new Date().getFullYear()} Mundo da Diversão - Brinquedos Infantis.</p>
+        <p>Transformando casas em parques de diversão desde 2014.</p>
       </footer>
     </div>
   );
