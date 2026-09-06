@@ -26,6 +26,8 @@ const featuredProducts = [
   },
 ];
 
+const heroHighlight = featuredProducts[0]!;
+
 const categories = [
   {
     title: "Vestidos de Festa",
@@ -78,7 +80,8 @@ const catalogProducts = [
   },
   {
     name: "Calça Mila Pregas",
-    description: "Alfaiataria leve com barra cenoura.",
+    description: "Alfaiataria leve com barra cenoura.
+",
     price: "R$ 329",
     image: "https://images.unsplash.com/photo-1508424757105-b6d5ad9329d0?auto=format&fit=crop&w=800&q=80",
   },
@@ -202,8 +205,20 @@ export default function Home() {
             </ul>
           </div>
           <div className={styles.heroMedia}>
-            <span>Coleção Petite Lumière</span>
-            <strong>Peças limitadas e acabamentos autorais</strong>
+            <div className={styles.heroMediaText}>
+              <span>Coleção Petite Lumière</span>
+              <strong>Peças limitadas e acabamentos autorais</strong>
+            </div>
+            <div className={styles.heroMediaCard} style={{ backgroundImage: `url(${heroHighlight.image})` }}>
+              <div className={styles.heroMediaOverlay}>
+                <p>{heroHighlight.badge}</p>
+                <strong>{heroHighlight.name}</strong>
+                <span className={styles.heroMediaPrice}>{heroHighlight.price}</span>
+                <a href="#catalogo" className={styles.heroMediaButton}>
+                  Comprar agora
+                </a>
+              </div>
+            </div>
           </div>
         </section>
 

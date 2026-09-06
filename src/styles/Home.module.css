@@ -159,7 +159,8 @@
   color: #FDF6EC;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
   padding: 2rem;
   position: relative;
   overflow: hidden;
@@ -189,6 +190,80 @@
 
 .heroMedia strong {
   font-size: 1.2rem;
+}
+
+.heroMediaText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.heroMediaCard {
+  flex: 1;
+  border-radius: 22px;
+  min-height: 260px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.35);
+}
+
+.heroMediaCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.65));
+}
+
+.heroMediaOverlay {
+  position: absolute;
+  inset: 0;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  z-index: 1;
+  color: #FDF6EC;
+}
+
+.heroMediaOverlay p {
+  margin: 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  color: rgba(253, 246, 236, 0.85);
+}
+
+.heroMediaOverlay strong {
+  font-size: 1.6rem;
+}
+
+.heroMediaPrice {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #FDF6EC;
+}
+
+.heroMediaButton {
+  margin-top: 0.6rem;
+  align-self: flex-start;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  background: rgba(253, 246, 236, 0.1);
+  border: 1px solid rgba(253, 246, 236, 0.55);
+  color: #FDF6EC;
+  font-weight: 600;
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.heroMediaButton:hover {
+  background: rgba(253, 246, 236, 0.3);
+  transform: translateY(-2px);
 }
 
 .intro {
@@ -340,6 +415,12 @@
   display: flex;
   flex-direction: column;
   background: #FDFBF8;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.catalogCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 45px rgba(31, 26, 23, 0.12);
 }
 
 .catalogImage {
@@ -376,13 +457,19 @@
 }
 
 .catalogButton {
-  background: transparent;
-  border: 1px solid #C49E60;
+  background: linear-gradient(135deg, #1F1B16, #4B2E1E);
+  border: none;
   border-radius: 999px;
   padding: 0.5rem 1.2rem;
   font-weight: 600;
-  color: #7B4E2B;
+  color: #FDF8F3;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.catalogButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(31, 27, 22, 0.2);
 }
 
 .productFocus {
@@ -608,6 +695,19 @@
   .categoryGrid,
   .catalogGrid {
     grid-template-columns: 1fr;
+  }
+
+  .heroMediaCard {
+    min-height: 320px;
+  }
+
+  .catalogImage {
+    height: 280px;
+  }
+
+  .catalogButton {
+    width: 100%;
+    text-align: center;
   }
 
   .formRow {
