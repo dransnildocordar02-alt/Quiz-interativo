@@ -2,215 +2,275 @@ import React from "react";
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 
-const productCategories = [
+const featuredProducts = [
   {
-    icon: "VL",
-    title: "Vestidos",
-    description: "Modelagens midi e longas, com acabamentos impecáveis para ocasiões sofisticadas.",
-    highlight: "Vestido Elegante em renda francesa",
-    style: "dresses",
+    name: "Vestido Stella Crepe",
+    price: "R$ 489",
+    details: "Midi fluido com decote suave e cintura marcada para valorizar a silhueta.",
+    badge: "Favorito da semana",
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
   },
   {
-    icon: "CP",
-    title: "Camisas",
-    description: "Camisas premium com cortes estruturados e tecidos suaves para um visual impecável.",
-    highlight: "Camisa Premium em algodão egípcio",
-    style: "shirts",
+    name: "Conjunto Maris Pólen",
+    price: "R$ 649",
+    details: "Top estruturado e saia envelope em linho com toque acetinado.",
+    badge: "Edição limitada",
+    image: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=80",
   },
   {
-    icon: "BM",
-    title: "Blusas",
-    description: "Blusas modernas com detalhes minimalistas e cores neutras para combinar com tudo.",
-    highlight: "Blusa Moderna com decote assimétrico",
-    style: "tops",
-  },
-  {
-    icon: "CA",
-    title: "Calças",
-    description: "Calças de alfaiataria com caimento perfeito e versatilidade do trabalho ao jantar.",
-    highlight: "Calça de Alfaiataria em linho",
-    style: "pants",
-  },
-  {
-    icon: "CJ",
-    title: "Conjuntos",
-    description: "Coordenados elegantes que facilitam o look completo com harmonia e estilo.",
-    highlight: "Conjunto Casual com acabamento acetinado",
-    style: "sets",
-  },
-  {
-    icon: "MF",
-    title: "Moda feminina",
-    description: "Curadoria feminina com peças statement, casacos estruturados e vestidos icônicos.",
-    highlight: "Conjunto Feminino com recortes precisos",
-    style: "women",
-  },
-  {
-    icon: "MM",
-    title: "Moda masculina",
-    description: "Costuras precisas, camisas italianas e blazers com toque contemporâneo.",
-    highlight: "Camisa Premium com punho duplo",
-    style: "men",
-  },
-  {
-    icon: "AC",
-    title: "Acessórios",
-    description: "Bolsas, cintos e joias minimalistas para finalizar qualquer produção com sofisticação.",
-    highlight: "Pulseira com detalhes dourados",
-    style: "accessories",
+    name: "Macacão Lune Preto",
+    price: "R$ 559",
+    details: "Decote reto, alças finas e caimento impecável para noites especiais.",
+    badge: "Nova chegada",
+    image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
-const benefits = [
-  "Peças selecionadas",
-  "Moda moderna e elegante",
-  "Ótimo custo-benefício",
-  "Compra fácil e segura",
-  "Envio para todo o país",
+const categories = [
+  {
+    title: "Vestidos de Festa",
+    description: "Brilhos sutis, rendas francesas e caimentos perfeitos.",
+    theme: "dressCategory",
+  },
+  {
+    title: "Essenciais do Dia",
+    description: "Camisas, blusas e tops leves para qualquer agenda.",
+    theme: "essentialsCategory",
+  },
+  {
+    title: "Casual Chic",
+    description: "Peças confortáveis com acabamento premium.",
+    theme: "casualCategory",
+  },
+  {
+    title: "Noite & Jantar",
+    description: "Looks elegantes para encontros especiais.",
+    theme: "eveningCategory",
+  },
 ];
 
-const featuredLooks = [
+const catalogProducts = [
   {
-    title: "Vestido Elegante Aurora",
-    description: "Silhueta fluida com recortes estratégicos e brilho sutil em fio dourado.",
-    tag: "Preview feminino",
-    price: "R$ 890",
-    tone: "warmLook",
+    name: "Vestido Aurora Rosé",
+    description: "Crepe leve com recortes delicados.",
+    price: "R$ 459",
+    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80",
+    discount: "10% OFF",
   },
   {
-    title: "Camisa Premium Noir",
-    description: "Algodão egípcio acetinado, gola estruturada e botões em madrepérola escura.",
-    tag: "Preview masculino",
-    price: "R$ 620",
-    tone: "neutralLook",
+    name: "Blusa Lise Seda",
+    description: "Toque acetinado e gola laço.",
+    price: "R$ 289",
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "Conjunto Casual Urbano",
-    description: "Jaqueta minimalista e calça reta em alfaiataria leve para dias versáteis.",
-    tag: "Lançamento cápsula",
-    price: "R$ 1.150",
-    tone: "darkLook",
+    name: "Saia Sofia Midi",
+    description: "Cintura alta, pregas e fluidez.",
+    price: "R$ 339",
+    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    name: "Blazer Olivia Linho",
+    description: "Estrutura slim em linho italiano.",
+    price: "R$ 389",
+    image: "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=800&q=80",
+    discount: "15% OFF",
+  },
+  {
+    name: "Calça Mila Pregas",
+    description: "Alfaiataria leve com barra cenoura.",
+    price: "R$ 329",
+    image: "https://images.unsplash.com/photo-1508424757105-b6d5ad9329d0?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    name: "Macacão Luna Preto",
+    description: "Silhueta reta com amarração traseira.",
+    price: "R$ 559",
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    name: "Vestido Noemi Floral",
+    description: "Estampa exclusiva com manga bufante.",
+    price: "R$ 499",
+    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    name: "Top Eva Nó",
+    description: "Detalhe frontal e tecido acetinado.",
+    price: "R$ 219",
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    name: "Conjunto Lia Pérola",
+    description: "Cardigã cropped e saia mini em tricô fino.",
+    price: "R$ 549",
+    image: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    name: "Kimono Ivy Areia",
+    description: "Sobreposição fluida com faixa na cintura.",
+    price: "R$ 299",
+    image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80",
   },
 ];
+
+const productDetail = {
+  name: "Vestido Aura Terracota",
+  price: "R$ 520",
+  description:
+    "Modelagem envelope com fenda delicada, tecido com caimento perolado e amarração lateral ajustável.",
+  sizes: ["PP", "P", "M", "G", "GG"],
+  colors: ["Terracota", "Champagne", "Preto"],
+  images: [
+    "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1475180098004-ca77a66827be?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1475180092312-5a4b2a3d81ca?auto=format&fit=crop&w=800&q=80",
+  ],
+};
+
+const cartItems = [
+  {
+    name: "Vestido Serenity Tule",
+    size: "P",
+    color: "Champagne",
+    price: 420,
+    quantity: 1,
+  },
+  {
+    name: "Blazer Olivia Linho",
+    size: "M",
+    color: "Creme",
+    price: 389,
+    quantity: 1,
+  },
+];
+
+const formatCurrency = (value: number) => value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
 export default function Home() {
+  const cartSubtotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  const deliveryFee = 25;
+  const cartTotal = cartSubtotal + deliveryFee;
+
   return (
     <div className={styles.container}>
       <Head>
-        <title>Atelier Lumière | Loja de Moda e Roupas</title>
+        <title>Lumière Boutique | Mini Loja de Moda Feminina</title>
         <meta
           name="description"
-          content="Moda feminina e masculina com vestidos, camisas premium, conjuntos modernos e acessórios sofisticados para todas as ocasiões."
+          content="Mini boutique feminina com vestidos, conjuntos e peças autorais para comprar de forma rápida e elegante."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <header className={styles.header}>
+        <div className={styles.logo}>
+          Lumière
+          <small>Boutique</small>
+        </div>
+        <nav className={styles.nav}>
+          <a href="#catalogo">Catálogo</a>
+          <a href="#produto">Produto</a>
+          <a href="#carrinho">Carrinho</a>
+          <a href="#finalizacao">Finalizar</a>
+        </nav>
+        <a href="#catalogo" className={styles.primaryButton}>
+          Comprar
+        </a>
+      </header>
       <main className={styles.main}>
         <section className={styles.hero}>
           <div className={styles.heroContent}>
-            <p className={styles.tag}>Coleção Atelier Luxe 2024</p>
-            <h1>Vista-se bem. Sinta-se incrível. ✨</h1>
-            <p className={styles.subtitle}>
-              Descubra peças modernas e estilosas para renovar o seu guarda-roupa.
+            <p className={styles.heroTag}>Boutique cápsula • 2024</p>
+            <h1>Mini loja de peças femininas com curadoria impecável</h1>
+            <p className={styles.heroSubtitle}>
+              Seleção enxuta de vestidos, blusas e conjuntos premium pensados para mães, empreendedoras e mulheres que
+              buscam beleza sem excesso.
             </p>
             <div className={styles.heroActions}>
-              <a href="#produtos" className={styles.primaryButton}>
-                COMPRAR AGORA
+              <a href="#catalogo" className={styles.primaryButton}>
+                Ver catálogo
               </a>
-              <a href="#ofertas" className={styles.secondaryButton}>
-                VER COLEÇÃO
+              <a href="#produto" className={styles.secondaryButton}>
+                Produto em destaque
               </a>
             </div>
-            <ul className={styles.heroBadges}>
-              <li>Novidades exclusivas toda semana</li>
-              <li>Consultoria de estilo personalizada</li>
-              <li>Entrega express para todo o Brasil</li>
+            <ul className={styles.heroHighlights}>
+              <li>Envio rápido para todo o Brasil</li>
+              <li>Pagamentos seguros</li>
+              <li>Atendimento pelo WhatsApp</li>
             </ul>
           </div>
-          <div className={styles.heroIllustration}>
-            <div className={styles.heroBubbleOne}></div>
-            <div className={styles.heroBubbleTwo}></div>
-            <div className={styles.heroShowcase}>
-              <div className={styles.lookCard}>
-                <p className={styles.lookSeason}>Coleção Signature</p>
-                <h3>Conjunto Tailleur</h3>
-                <p className={styles.lookDetails}>Alfaiataria precisa, toque acetinado e caimento impecável.</p>
-                <span className={styles.lookPrice}>R$ 1.290</span>
-              </div>
-              <div className={styles.lookHighlight}>
-                <p>Curadoria Premium</p>
-                <strong>Camadas que traduzem sofisticação cotidiana</strong>
-              </div>
-            </div>
+          <div className={styles.heroMedia}>
+            <span>Coleção Petite Lumière</span>
+            <strong>Peças limitadas e acabamentos autorais</strong>
           </div>
         </section>
 
-        <section id="ofertas" className={styles.offer}>
-          <div className={styles.offerContent}>
-            <p className={styles.offerTag}>OFERTA ESPECIAL</p>
-            <h2>Renove seu guarda-roupa com peças selecionadas e preços especiais.</h2>
-            <p>
-              Itens em edição limitada, tecidos nobres e acabamentos impecáveis para elevar cada produção. Aproveite
-              condições exclusivas por tempo limitado.
-            </p>
-          </div>
-          <a href="#produtos" className={styles.primaryButton}>
-            QUERO O MEU
-          </a>
+        <section className={styles.intro}>
+          <h2>Uma boutique pequena, charmosa e autoral</h2>
+          <p>
+            Trabalhamos com lotes reduzidos para garantir exclusividade e cuidado em cada detalhe: tecidos leves, tons
+            femininos e modelagens pensadas para realçar a autoestima.
+          </p>
         </section>
 
-        <section id="produtos" className={styles.products}>
+        <section className={styles.featured}>
           <div className={styles.sectionHeader}>
-            <h2>Coleções que traduzem o seu estilo</h2>
-            <p>Seleção premium de moda feminina e masculina para compor looks urbanos, sofisticados e autorais.</p>
+            <h2>Produtos em destaque</h2>
+            <p>Escolhemos três peças imperdíveis para você se apaixonar agora.</p>
           </div>
-          <div className={styles.grid}>
-            {productCategories.map((category) => (
-              <div key={category.title} className={`${styles.card} ${styles[category.style]}`}>
-                <div className={styles.cardIcon}>{category.icon}</div>
+          <div className={styles.featuredGrid}>
+            {featuredProducts.map((product) => (
+              <article key={product.name} className={styles.featuredCard}>
+                <span className={styles.featuredBadge}>{product.badge}</span>
+                <div className={styles.productImage} style={{ backgroundImage: `url(${product.image})` }}></div>
+                <h3>{product.name}</h3>
+                <p>{product.details}</p>
+                <div className={styles.featuredMeta}>
+                  <span>{product.price}</span>
+                  <a href="#catalogo" className={styles.secondaryButton}>
+                    Comprar
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.categories}>
+          <div className={styles.sectionHeader}>
+            <h2>Categorias principais</h2>
+            <p>Descubra o que combina com o seu momento.</p>
+          </div>
+          <div className={styles.categoryGrid}>
+            {categories.map((category) => (
+              <div key={category.title} className={`${styles.categoryCard} ${styles[category.theme]}`}>
                 <h3>{category.title}</h3>
                 <p>{category.description}</p>
-                <span className={styles.cardHighlight}>{category.highlight}</span>
-                <a href="#ofertas" className={styles.cardButton}>
-                  VER COLEÇÃO
-                </a>
+                <a href="#catalogo">Ver peças</a>
               </div>
             ))}
           </div>
         </section>
 
-        <section className={styles.benefits}>
+        <section id="catalogo" className={styles.catalog}>
           <div className={styles.sectionHeader}>
-            <h2>Benefícios que elevam sua experiência</h2>
-            <p>Cada detalhe foi pensado para oferecer uma jornada de compra sofisticada e prática.</p>
+            <h2>Catálogo de produtos</h2>
+            <p>8 a 12 peças selecionadas para você montar o look completo.</p>
           </div>
-          <ul className={styles.benefitsList}>
-            {benefits.map((benefit) => (
-              <li key={benefit}>✓ {benefit}</li>
-            ))}
-          </ul>
-        </section>
-
-        <section className={styles.lookbook}>
-          <div className={styles.sectionHeader}>
-            <h2>Preview da coleção</h2>
-            <p>Visualize combinações exclusivas com alfaiataria contemporânea e acabamentos de alto padrão.</p>
-          </div>
-          <div className={styles.lookbookGrid}>
-            {featuredLooks.map((look) => (
-              <article key={look.title} className={`${styles.lookbookCard} ${styles[look.tone]}`}>
-                <div className={styles.lookbookMedia}>
-                  <span className={styles.lookbookTag}>{look.tag}</span>
-                  <div className={styles.lookbookTexture}></div>
+          <div className={styles.catalogGrid}>
+            {catalogProducts.map((product) => (
+              <article key={product.name} className={styles.catalogCard}>
+                <div className={styles.catalogImage} style={{ backgroundImage: `url(${product.image})` }}>
+                  {product.discount && <span className={styles.discountTag}>{product.discount}</span>}
                 </div>
-                <div className={styles.lookbookDetails}>
-                  <h3>{look.title}</h3>
-                  <p>{look.description}</p>
-                  <div className={styles.lookbookMeta}>
-                    <span className={styles.lookbookPrice}>{look.price}</span>
-                    <a href="#produtos" className={styles.cardButton}>
-                      COMPRAR AGORA
-                    </a>
+                <div className={styles.catalogInfo}>
+                  <h3>{product.name}</h3>
+                  <p>{product.description}</p>
+                  <div className={styles.catalogPrice}>
+                    <strong>{product.price}</strong>
+                    <button className={styles.catalogButton}>Comprar</button>
                   </div>
                 </div>
               </article>
@@ -218,20 +278,133 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.ctaBanner}>
-          <div>
-            <p className={styles.ctaTag}>Experiência premium</p>
-            <h2>Experimente a curadoria de moda que inspira seus looks diários</h2>
-            <p>Combine peças exclusivas, descubra novas texturas e receba tudo com embalagem impecável.</p>
+        <section id="produto" className={styles.productFocus}>
+          <div className={styles.productGallery}>
+            {productDetail.images.map((image) => (
+              <div key={image} className={styles.galleryImage} style={{ backgroundImage: `url(${image})` }}></div>
+            ))}
           </div>
-          <a href="#produtos" className={styles.primaryButton}>
-            VER COLEÇÃO
-          </a>
+          <div className={styles.productInfo}>
+            <p className={styles.productTag}>Produto em destaque</p>
+            <h2>{productDetail.name}</h2>
+            <p className={styles.productDescription}>{productDetail.description}</p>
+            <strong className={styles.productPrice}>{productDetail.price}</strong>
+            <div className={styles.optionGroup}>
+              <span className={styles.optionLabel}>Tamanhos</span>
+              <div className={styles.optionPills}>
+                {productDetail.sizes.map((size) => (
+                  <span key={size} className={styles.pill}>
+                    {size}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className={styles.optionGroup}>
+              <span className={styles.optionLabel}>Cores</span>
+              <div className={styles.optionPills}>
+                {productDetail.colors.map((color) => (
+                  <span key={color} className={styles.pill}>
+                    {color}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <a href="#finalizacao" className={styles.primaryButton}>
+              Comprar agora
+            </a>
+          </div>
+        </section>
+
+        <section id="carrinho" className={styles.cart}>
+          <div className={styles.sectionHeader}>
+            <h2>Carrinho</h2>
+            <p>Revise suas escolhas antes de finalizar.</p>
+          </div>
+          <div className={styles.cartItems}>
+            {cartItems.map((item) => (
+              <div key={`${item.name}-${item.size}`} className={styles.cartItem}>
+                <div className={styles.cartItemDetails}>
+                  <h4>{item.name}</h4>
+                  <p className={styles.cartMeta}>
+                    {item.size} • {item.color}
+                  </p>
+                </div>
+                <span>
+                  {formatCurrency(item.price)} x {item.quantity}
+                </span>
+              </div>
+            ))}
+          </div>
+          <div className={styles.cartTotals}>
+            <p>
+              <span>Subtotal</span>
+              <strong>{formatCurrency(cartSubtotal)}</strong>
+            </p>
+            <p>
+              <span>Entrega expressa</span>
+              <strong>{formatCurrency(deliveryFee)}</strong>
+            </p>
+            <p className={styles.cartTotalRow}>
+              <span>Total</span>
+              <strong>{formatCurrency(cartTotal)}</strong>
+            </p>
+            <a href="#finalizacao" className={styles.primaryButton}>
+              Finalizar pedido
+            </a>
+          </div>
+        </section>
+
+        <section id="finalizacao" className={styles.checkout}>
+          <div className={styles.sectionHeader}>
+            <h2>Finalização do pedido</h2>
+            <p>Preencha os dados para receber o link rápido pelo WhatsApp.</p>
+          </div>
+          <form className={styles.checkoutForm}>
+            <div className={styles.formRow}>
+              <div className={styles.inputGroup}>
+                <label htmlFor="nome">Nome completo</label>
+                <input type="text" id="nome" placeholder="Ex: Ana Costa" />
+              </div>
+              <div className={styles.inputGroup}>
+                <label htmlFor="whatsapp">WhatsApp</label>
+                <input type="tel" id="whatsapp" placeholder="(00) 00000-0000" />
+              </div>
+            </div>
+            <div className={styles.formRow}>
+              <div className={`${styles.inputGroup} ${styles.fullWidth}`}>
+                <label htmlFor="endereco">Endereço de entrega</label>
+                <input type="text" id="endereco" placeholder="Rua, número, complemento" />
+              </div>
+            </div>
+            <div className={styles.formRow}>
+              <div className={styles.inputGroup}>
+                <label htmlFor="produto">Produto escolhido</label>
+                <input type="text" id="produto" placeholder="Ex: Vestido Aura Terracota" />
+              </div>
+              <div className={styles.inputGroup}>
+                <label htmlFor="tamanho">Tamanho</label>
+                <input type="text" id="tamanho" placeholder="PP / P / M / G / GG" />
+              </div>
+              <div className={styles.inputGroup}>
+                <label htmlFor="cor">Cor</label>
+                <input type="text" id="cor" placeholder="Informe a cor desejada" />
+              </div>
+            </div>
+            <div className={styles.formRow}>
+              <div className={`${styles.inputGroup} ${styles.fullWidth}`}>
+                <label htmlFor="observacoes">Observações</label>
+                <textarea id="observacoes" rows={3} placeholder="Preferências adicionais, horário para entrega..."></textarea>
+              </div>
+            </div>
+            <button type="submit" className={styles.primaryButton}>
+              Finalizar agora
+            </button>
+          </form>
         </section>
       </main>
       <footer className={styles.footer}>
-        <p>© {new Date().getFullYear()} Atelier Lumière - Moda & Lifestyle.</p>
-        <p>Elegância contemporânea, atendimento personalizado e entrega para todo o Brasil.</p>
+        <p>© {new Date().getFullYear()} Lumière Boutique.</p>
+        <p>Boutique feminina, atendimento humano e peças em curadoria especial.</p>
       </footer>
     </div>
   );
