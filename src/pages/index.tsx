@@ -154,6 +154,94 @@ const faq = [
   },
 ];
 
+const metrics = [
+  { value: "+4.800", label: "Catequistas formados" },
+  { value: "+120", label: "Encontros detalhados" },
+  { value: "24h", label: "Liberação do acesso" },
+  { value: "12 meses", label: "Suporte acompanhado" },
+];
+
+const modules = [
+  {
+    tag: "Módulo 01",
+    title: "Fundamentos e planejamento",
+    description: "Monte o calendário anual com objetivos claros para cada etapa da turma.",
+    items: [
+      "Cronograma completo com festas litúrgicas",
+      "Checklist de acolhida e ambientação",
+      "Plano pedagógico por faixa etária",
+    ],
+  },
+  {
+    tag: "Módulo 02",
+    title: "Roteiros semanais guiados",
+    description: "Aulas prontas com citações bíblicas, dinâmicas e atividades aplicáveis.",
+    items: [
+      "Dinâmicas visuais e simbólicas",
+      "Materiais imprimíveis e slides",
+      "Sugestões de oração para cada encontro",
+    ],
+  },
+  {
+    tag: "Módulo 03",
+    title: "Planilhas e indicadores",
+    description: "Ferramentas para acompanhar presença, sacramentos e evolução espiritual.",
+    items: [
+      "Planilha de acompanhamento geral",
+      "Relatórios para coordenação",
+      "Checklist de preparação aos sacramentos",
+    ],
+  },
+  {
+    tag: "Módulo 04",
+    title: "Eventos e celebrações",
+    description: "Guie encontros especiais e momentos-chave do ano litúrgico com segurança.",
+    items: [
+      "Modelos de encontros temáticos",
+      "Roteiros para retiros e missões",
+      "Materiais para família e comunidade",
+    ],
+  },
+];
+
+const resources = [
+  {
+    icon: "🖥️",
+    title: "Slides e apresentações",
+    description: "Modelos editáveis no Canva e PowerPoint com identidade do Mapa.",
+  },
+  {
+    icon: "📝",
+    title: "Guias imprimíveis",
+    description: "Fichas de atividades, cartões de oração e desafios semanais.",
+  },
+  {
+    icon: "🎵",
+    title: "Playlist temática",
+    description: "Trilhas e áudios para ambientar encontros presenciais ou online.",
+  },
+  {
+    icon: "🤝",
+    title: "Comunidade ativa",
+    description: "Grupo exclusivo com catequistas do Brasil para troca diária.",
+  },
+];
+
+const journeySteps = [
+  {
+    title: "Confirme sua inscrição",
+    description: "Garanta a vaga na oferta atual com pagamento 100% seguro.",
+  },
+  {
+    title: "Receba o acesso",
+    description: "O portal é liberado imediatamente no e-mail e WhatsApp.",
+  },
+  {
+    title: "Implemente com apoio",
+    description: "Use os roteiros e participe dos plantões mensais com a equipe.",
+  },
+];
+
 export default function Home() {
   const [openItem, setOpenItem] = useState<string | null>(null);
 
@@ -174,6 +262,21 @@ export default function Home() {
         <span>Inscreva-se hoje e receba 6 bônus + acesso vitalício</span>
       </div>
       <main className={styles.wrapper}>
+        <header className={styles.navbar}>
+          <div className={styles.navLogo}>
+            <span>Mapa do Catecismo</span>
+            <small>2024</small>
+          </div>
+          <nav className={styles.navLinks}>
+            <a href="#depoimentos">Depoimentos</a>
+            <a href="#tudo-receber">Tudo o que recebo</a>
+            <a href="#bonus">Bônus</a>
+            <a href="#ofertas">Oferta</a>
+          </nav>
+          <a href="#ofertas" className={styles.navCta}>
+            Garantir minha vaga
+          </a>
+        </header>
         <section className={styles.heroSection}>
           <div className={styles.heroText}>
             <p className={styles.heroTag}>Formação completa • Catequese 2024</p>
@@ -210,6 +313,17 @@ export default function Home() {
           </div>
         </section>
 
+        <section className={styles.metricsSection}>
+          <div className={styles.metricsGrid}>
+            {metrics.map((metric) => (
+              <div key={metric.label} className={styles.metricCard}>
+                <strong>{metric.value}</strong>
+                <span>{metric.label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className={styles.productImageSection}>
           <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80" alt="Visual geral do produto" />
         </section>
@@ -224,7 +338,7 @@ export default function Home() {
           </a>
         </section>
 
-        <section className={styles.testimonials}>
+        <section id="depoimentos" className={styles.testimonials}>
           <div className={styles.sectionHeader}>
             <p>Depoimentos reais</p>
             <h2>Resultados de quem aplicou o Mapa</h2>
@@ -238,6 +352,27 @@ export default function Home() {
                   <strong>{item.name}</strong>
                   <span>{item.location}</span>
                 </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.modulesSection}>
+          <div className={styles.sectionHeader}>
+            <p>Conteúdo organizado</p>
+            <h2>O passo a passo completo dividido em módulos estratégicos</h2>
+          </div>
+          <div className={styles.modulesGrid}>
+            {modules.map((module) => (
+              <article key={module.tag} className={styles.moduleCard}>
+                <span className={styles.moduleTag}>{module.tag}</span>
+                <h3>{module.title}</h3>
+                <p>{module.description}</p>
+                <ul>
+                  {module.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
@@ -269,6 +404,22 @@ export default function Home() {
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
               </article>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.resourcesSection}>
+          <div className={styles.sectionHeader}>
+            <p>Materiais extras</p>
+            <h2>Ferramentas visuais prontas para aplicar nos encontros</h2>
+          </div>
+          <div className={styles.resourceGrid}>
+            {resources.map((resource) => (
+              <div key={resource.title} className={styles.resourceCard}>
+                <span>{resource.icon}</span>
+                <h3>{resource.title}</h3>
+                <p>{resource.description}</p>
+              </div>
             ))}
           </div>
         </section>
@@ -358,21 +509,45 @@ export default function Home() {
           </div>
         </section>
 
-        {bonuses.map((bonus) => (
-          <section key={bonus.number} className={styles.bonusSection}>
-            <div className={styles.bonusNumber}>Bônus {bonus.number}</div>
-            <div className={styles.bonusContent}>
-              <div>
-                <h3>{bonus.title}</h3>
-                <p>{bonus.description}</p>
-                <span className={styles.bonusValue}>Valor: {bonus.value} • Você recebe gratuito</span>
+        <section className={styles.timelineSection}>
+          <div className={styles.sectionHeader}>
+            <p>Seu caminho</p>
+            <h2>Entre hoje e comece a aplicar imediatamente</h2>
+          </div>
+          <div className={styles.timelineList}>
+            {journeySteps.map((step, index) => (
+              <div key={step.title} className={styles.timelineItem}>
+                <div className={styles.timelineCircle}>{`0${index + 1}`}</div>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
               </div>
-              <div className={styles.bonusImage}>
-                <img src={bonus.image} alt={bonus.title} />
-              </div>
-            </div>
-          </section>
-        ))}
+            ))}
+          </div>
+        </section>
+
+        <section id="bonus" className={styles.bonusWrapper}>
+          <div className={styles.sectionHeader}>
+            <p>Bônus exclusivos</p>
+            <h2>Presentes liberados para quem entra nesta turma</h2>
+          </div>
+          <div className={styles.bonusStack}>
+            {bonuses.map((bonus) => (
+              <article key={bonus.number} className={styles.bonusSection}>
+                <div className={styles.bonusNumber}>Bônus {bonus.number}</div>
+                <div className={styles.bonusContent}>
+                  <div>
+                    <h3>{bonus.title}</h3>
+                    <p>{bonus.description}</p>
+                    <span className={styles.bonusValue}>Valor: {bonus.value} • Você recebe gratuito</span>
+                  </div>
+                  <div className={styles.bonusImage}>
+                    <img src={bonus.image} alt={bonus.title} />
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
         <section className={styles.midCta}>
           <h2>Entre agora e receba todos os bônus</h2>
@@ -436,6 +611,22 @@ export default function Home() {
           <p>
             Se você entrar, acessar as aulas e perceber que o Mapa do Catecismo não é para você, basta enviar uma mensagem em até 7 dias e devolvemos 100% do valor investido. Sem letras miúdas.
           </p>
+        </section>
+
+        <section className={styles.timelineSection}>
+          <div className={styles.sectionHeader}>
+            <p>Experiência guiada</p>
+            <h2>Suporte contínuo do primeiro encontro até a celebração final</h2>
+          </div>
+          <div className={styles.accordion}>
+            {journeySteps.map((step) => (
+              <div key={`${step.title}-accordion`} className={styles.timelineItem}>
+                <div className={styles.timelineCircle}>✓</div>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section className={styles.faq}>
