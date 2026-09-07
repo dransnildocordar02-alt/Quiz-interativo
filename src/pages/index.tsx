@@ -2,665 +2,410 @@ import React, { useState } from "react";
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 
-const testimonials = [
+const categories = [
   {
-    name: "Fernanda A.",
-    location: "Curitiba/PR",
-    text:
-      "O Mapa do Catecismo me deu clareza do início ao fim. Em poucas semanas minha catequese ficou muito mais organizada e os encontros renderam muito!",
-    avatar: "FA",
+    name: "Vestidos",
+    image: "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=900&q=80",
+    description: "Silhuetas fluidas e elegantes para todas as ocasiões.",
   },
   {
-    name: "Pe. Ricardo",
-    location: "Juiz de Fora/MG",
-    text:
-      "Uso com todos os catequistas da paróquia. As aulas prontas, os roteiros e os bônus nos fizeram ganhar o ano inteiro de planejamento.",
-    avatar: "PR",
+    name: "Camisetas",
+    image: "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=900&q=80",
+    description: "Malhas premium, cortes minimalistas e toque macio.",
   },
   {
-    name: "Tatiane Lopes",
-    location: "Belo Horizonte/MG",
-    text:
-      "Finalmente encontrei um material completo, bonito e fácil de aplicar. As crianças se apaixonaram pelas dinâmicas.",
-    avatar: "TL",
-  },
-];
-
-const insideContent = [
-  "Plano anual completo",
-  "Roteiros detalhados",
-  "Planilhas de acompanhamento",
-  "Materiais visuais prontos",
-  "Treinamento para catequistas",
-  "Plantão de dúvidas",
-];
-
-const audiences = [
-  {
-    title: "Catequistas iniciantes",
-    description: "Encontros prontos, passo a passo e apoio direto para conduzir com segurança.",
+    name: "Calças",
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80",
+    description: "Modelagens modernas com caimento impecável.",
   },
   {
-    title: "Coordenações paroquiais",
-    description: "Organize toda a equipe com o mesmo roteiro, cronograma e indicadores.",
+    name: "Conjuntos",
+    image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80",
+    description: "Looks completos com harmonias perfeitas.",
   },
   {
-    title: "Catequistas experientes",
-    description: "Atualize seus conteúdos, ganhe tempo com materiais modernos e impacte ainda mais as turmas.",
+    name: "Camisas",
+    image: "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=900&q=80",
+    description: "Alfaiataria contemporânea para elevar o visual.",
+  },
+  {
+    name: "Acessórios",
+    image: "https://images.unsplash.com/photo-1475180098004-ca77a66827be?auto=format&fit=crop&w=900&q=80",
+    description: "Detalhes em couro e metais sofisticados.",
   },
 ];
 
-const productSteps = [
+const featuredCollections = [
   {
-    title: "Planejamento anual",
-    description: "Calendário completo, objetivos e metas para cada etapa do ano catequético.",
+    id: "feminino",
+    title: "Coleção Feminina",
+    description: "Texturas leves e cortes precisos pensados para a rotina premium.",
+    products: [
+      {
+        name: "Vestido Elegance",
+        image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80",
+        oldPrice: "4.990 MT",
+        price: "3.490 MT",
+        rating: 5,
+        description: "Crepe importado, cintura marcada e fluidez impecável.",
+      },
+      {
+        name: "Conjunto Casual",
+        image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80",
+        oldPrice: "5.490 MT",
+        price: "3.990 MT",
+        rating: 4.5,
+        description: "Blazer leve + calça reta com toque de linho natural.",
+      },
+    ],
   },
   {
-    title: "Roteiros semanais",
-    description: "Cada encontro explicado passo a passo, com dinâmicas, referências bíblicas e atividades.",
+    id: "masculino",
+    title: "Coleção Masculina",
+    description: "Peças urbanas com alfaiataria e conforto absoluto.",
+    products: [
+      {
+        name: "Camisa Urban Premium",
+        image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80",
+        oldPrice: "2.990 MT",
+        price: "2.290 MT",
+        rating: 4,
+        description: "Algodão egípcio, gola estruturada e acabamento interno.",
+      },
+      {
+        name: "Calça Premium",
+        image: "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=800&q=80",
+        oldPrice: "3.990 MT",
+        price: "2.990 MT",
+        rating: 4.5,
+        description: "Sarja italiana com elasticidade inteligente.",
+      },
+    ],
   },
-  {
-    title: "Ferramentas de acompanhamento",
-    description: "Planilhas, checklists e templates para mensurar o progresso dos catequizandos.",
-  },
-];
-
-const galleryImages = [
-  "https://images.unsplash.com/photo-1472162314594-eca3c3d90df1?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1472289065668-ce650ac443d2?auto=format&fit=crop&w=900&q=80",
 ];
 
 const benefits = [
-  "Aulas prontas do 1º ao 4º ano de catequese",
-  "Materiais visuais editáveis",
-  "Treinamento gravado + encontros ao vivo",
-  "Checklist para cada encontro",
-  "Planilha de presença e acompanhamento",
-  "Acesso imediato e vitalício ao portal",
+  "Produtos selecionados",
+  "Compra segura",
+  "Atendimento rápido",
+  "Entrega disponível",
+  "Qualidade garantida",
 ];
 
-const bonuses = [
+const testimonials = [
   {
-    number: "01",
-    title: "Caderno com 75 dinâmicas católicas",
-    description: "Sugestões prontas para aplicar em encontros presenciais e on-line.",
-    value: "R$ 197",
-    image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=80",
+    name: "Laura Mendes",
+    comment: "Recebi meu vestido em dois dias e a qualidade é idêntica às fotos. Atendimento impecável!",
+    rating: 5,
   },
   {
-    number: "02",
-    title: "Kit de artes para redes sociais",
-    description: "Mais de 120 artes editáveis no Canva para divulgar os encontros.",
-    value: "R$ 147",
-    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
+    name: "Ricardo Afonso",
+    comment: "As camisas têm caimento perfeito, dá para sentir o cuidado desde a embalagem até os detalhes.",
+    rating: 4.5,
   },
   {
-    number: "03",
-    title: "Calendário litúrgico interativo",
-    description: "Material visual que explica cada tempo litúrgico para crianças.",
-    value: "R$ 97",
-    image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    number: "04",
-    title: "Treinamento Jornada do Catequista",
-    description: "Aulas extras com suporte da equipe para alinhar toda a coordenação.",
-    value: "R$ 297",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    number: "05",
-    title: "Biblioteca de músicas e áudios",
-    description: "Playlist organizada para cada momento da catequese.",
-    value: "R$ 97",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    number: "06",
-    title: "Guia de encontros especiais",
-    description: "Celebrações temáticas prontas para Páscoa, Advento e Pentecostes.",
-    value: "R$ 167",
-    image: "https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=800&q=80",
+    name: "Camila Duarte",
+    comment: "Finalmente encontrei uma loja premium com experiência mobile fluida e peças realmente autorais.",
+    rating: 5,
   },
 ];
 
-const faq = [
-  {
-    question: "Como recebo o acesso ao Mapa do Catecismo?",
-    answer:
-      "Assim que a sua compra é confirmada, você recebe automaticamente no e-mail e no WhatsApp o link para o portal. Basta criar sua senha e acessar de qualquer dispositivo.",
-  },
-  {
-    question: "Por quanto tempo terei acesso ao conteúdo?",
-    answer:
-      "O acesso é vitalício. Você pode assistir e baixar os materiais quantas vezes quiser, inclusive nas próximas turmas.",
-  },
-  {
-    question: "Posso dividir o acesso com minha equipe?",
-    answer:
-      "Sim! Disponibilizamos até 5 logins adicionais para catequistas da mesma paróquia sem custo extra.",
-  },
-  {
-    question: "Há suporte em caso de dúvidas?",
-    answer:
-      "Temos plantões mensais ao vivo e um canal direto pelo WhatsApp para tirar dúvidas diariamente.",
-  },
-  {
-    question: "O material serve para catequese de adultos?",
-    answer:
-      "Sim, adaptamos o roteiro para turmas de jovens, adultos e crianças. Você recebe orientações em cada módulo.",
-  },
+const contactInfo = [
+  { label: "Email", value: "contato@lumieremoda.com" },
+  { label: "Telefone", value: "+55 (11) 4002-8922" },
+  { label: "Endereço", value: "Av. Paulista, 1500 - São Paulo/SP" },
 ];
 
-const metrics = [
-  { value: "+4.800", label: "Catequistas formados" },
-  { value: "+120", label: "Encontros detalhados" },
-  { value: "24h", label: "Liberação do acesso" },
-  { value: "12 meses", label: "Suporte acompanhado" },
-];
-
-const modules = [
-  {
-    tag: "Módulo 01",
-    title: "Fundamentos e planejamento",
-    description: "Monte o calendário anual com objetivos claros para cada etapa da turma.",
-    items: [
-      "Cronograma completo com festas litúrgicas",
-      "Checklist de acolhida e ambientação",
-      "Plano pedagógico por faixa etária",
-    ],
-  },
-  {
-    tag: "Módulo 02",
-    title: "Roteiros semanais guiados",
-    description: "Aulas prontas com citações bíblicas, dinâmicas e atividades aplicáveis.",
-    items: [
-      "Dinâmicas visuais e simbólicas",
-      "Materiais imprimíveis e slides",
-      "Sugestões de oração para cada encontro",
-    ],
-  },
-  {
-    tag: "Módulo 03",
-    title: "Planilhas e indicadores",
-    description: "Ferramentas para acompanhar presença, sacramentos e evolução espiritual.",
-    items: [
-      "Planilha de acompanhamento geral",
-      "Relatórios para coordenação",
-      "Checklist de preparação aos sacramentos",
-    ],
-  },
-  {
-    tag: "Módulo 04",
-    title: "Eventos e celebrações",
-    description: "Guie encontros especiais e momentos-chave do ano litúrgico com segurança.",
-    items: [
-      "Modelos de encontros temáticos",
-      "Roteiros para retiros e missões",
-      "Materiais para família e comunidade",
-    ],
-  },
-];
-
-const resources = [
-  {
-    icon: "🖥️",
-    title: "Slides e apresentações",
-    description: "Modelos editáveis no Canva e PowerPoint com identidade do Mapa.",
-  },
-  {
-    icon: "📝",
-    title: "Guias imprimíveis",
-    description: "Fichas de atividades, cartões de oração e desafios semanais.",
-  },
-  {
-    icon: "🎵",
-    title: "Playlist temática",
-    description: "Trilhas e áudios para ambientar encontros presenciais ou online.",
-  },
-  {
-    icon: "🤝",
-    title: "Comunidade ativa",
-    description: "Grupo exclusivo com catequistas do Brasil para troca diária.",
-  },
-];
-
-const journeySteps = [
-  {
-    title: "Confirme sua inscrição",
-    description: "Garanta a vaga na oferta atual com pagamento 100% seguro.",
-  },
-  {
-    title: "Receba o acesso",
-    description: "O portal é liberado imediatamente no e-mail e WhatsApp.",
-  },
-  {
-    title: "Implemente com apoio",
-    description: "Use os roteiros e participe dos plantões mensais com a equipe.",
-  },
-];
+const socialLinks = ["Instagram", "Pinterest", "Facebook", "YouTube"];
 
 export default function Home() {
-  const [openItem, setOpenItem] = useState<string | null>(null);
+  const [cartItems, setCartItems] = useState<string[]>([]);
+  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+  const [highlightedCategory, setHighlightedCategory] = useState<string>(categories[0].name);
 
-  const toggleItem = (question: string) => {
-    setOpenItem((prev) => (prev === question ? null : question));
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleAddToCart = (productName: string) => {
+    setCartItems((prev) => [...prev, productName]);
+  };
+
+  const handleBuyNow = (productName: string) => {
+    setSelectedProduct(productName);
+  };
+
+  const handleViewProducts = (categoryName: string) => {
+    setHighlightedCategory(categoryName);
+    scrollToSection("feminino");
   };
 
   return (
     <div className={styles.page}>
       <Head>
-        <title>Mapa do Catecismo | Formação completa para catequistas</title>
-        <meta name="description" content="Reprodução visual do site Mapa do Catecismo com toda a estrutura de oferta, bônus e conteúdos." />
+        <title>Lumière Moda | Loja premium de roupas</title>
+        <meta name="description" content="Página de vendas moderna e elegante para moda feminina e masculina." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.offerBar}>
-        <strong>Últimas vagas com bônus liberados</strong>
-        <span>Inscreva-se hoje e receba 6 bônus + acesso vitalício</span>
-      </div>
-      <main className={styles.wrapper}>
-        <header className={styles.navbar}>
-          <div className={styles.navLogo}>
-            <span>Mapa do Catecismo</span>
-            <small>2024</small>
-          </div>
-          <nav className={styles.navLinks}>
-            <a href="#depoimentos">Depoimentos</a>
-            <a href="#tudo-receber">Tudo o que recebo</a>
-            <a href="#bonus">Bônus</a>
-            <a href="#ofertas">Oferta</a>
-          </nav>
-          <a href="#ofertas" className={styles.navCta}>
-            Garantir minha vaga
-          </a>
-        </header>
-        <section className={styles.heroSection}>
-          <div className={styles.heroText}>
-            <p className={styles.heroTag}>Formação completa • Catequese 2024</p>
-            <h1>Mapa do Catecismo</h1>
+      <header className={styles.header}>
+        <div className={styles.logo}>
+          <span>Lumière</span>
+          <small>Moda</small>
+        </div>
+        <nav className={styles.navMenu}>
+          <a href="#inicio">Início</a>
+          <a href="#novidades">Novidades</a>
+          <a href="#feminino">Feminino</a>
+          <a href="#masculino">Masculino</a>
+          <a href="#promocoes">Promoções</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <div className={styles.headerActions}>
+          <button type="button" className={styles.iconButton} aria-label="Pesquisar">
+            🔍
+          </button>
+          <button type="button" className={styles.iconButton} aria-label="Carrinho" onClick={() => scrollToSection("contacto")}>
+            🛒
+            <span className={styles.cartCount}>{cartItems.length}</span>
+          </button>
+          <button type="button" className={styles.headerCta} onClick={() => scrollToSection("feminino")}>
+            Comprar Agora
+          </button>
+        </div>
+      </header>
+      <main className={styles.main}>
+        <section id="inicio" className={styles.hero}>
+          <div className={styles.heroContent}>
+            <p className={styles.heroTag}>Coleção premium • FW 24</p>
+            <h1>Vista o seu estilo. Sinta a diferença.</h1>
             <p className={styles.heroSubtitle}>
-              Um passo a passo visual, moderno e aprovado por mais de 4.800 catequistas para conduzir catequeses vivas, profundas e organizadas durante todo o ano.
+              Descubra peças modernas, confortáveis e selecionadas para deixar o seu visual ainda mais incrível.
             </p>
-            <ul className={styles.heroHighlights}>
-              <li>Roteiros semanais + encontros especiais</li>
-              <li>Planilhas de acompanhamento</li>
-              <li>Suporte direto com a equipe</li>
-            </ul>
             <div className={styles.heroButtons}>
-              <a href="#ofertas" className={styles.primaryButton}>
-                Quero fazer parte
-              </a>
-              <a href="#tudo-receber" className={styles.secondaryButton}>
-                Ver tudo o que recebo
-              </a>
+              <button type="button" className={styles.primaryButton} onClick={() => scrollToSection("novidades")}> 
+                Ver Coleção
+              </button>
+              <button type="button" className={styles.secondaryButton} onClick={() => scrollToSection("promocoes")}>
+                Comprar Agora
+              </button>
             </div>
-            <div className={styles.safeInfo}>
-              <span>Pagamento 100% seguro • Acesso imediato</span>
-            </div>
-          </div>
-          <div className={styles.heroCard}>
-            <div className={styles.heroCardImage}>
-              <img src="https://images.unsplash.com/photo-1498075702571-ecb018f3752d?auto=format&fit=crop&w=900&q=80" alt="Mockup do Mapa do Catecismo" />
-            </div>
-            <div className={styles.heroCardInfo}>
-              <p>Plano anual completo</p>
-              <strong>+ de 120 aulas prontas</strong>
-              <span>Planilhas, materiais visuais e suporte contínuo</span>
+            <div className={styles.heroHighlights}>
+              <span>Envio em até 24h</span>
+              <span>Parcelamento sem juros</span>
+              <span>Qualidade garantida</span>
             </div>
           </div>
-        </section>
-
-        <section className={styles.metricsSection}>
-          <div className={styles.metricsGrid}>
-            {metrics.map((metric) => (
-              <div key={metric.label} className={styles.metricCard}>
-                <strong>{metric.value}</strong>
-                <span>{metric.label}</span>
-              </div>
-            ))}
+          <div className={styles.heroImage}>
+            <img src="https://images.unsplash.com/photo-1495121605193-b116b5b09c73?auto=format&fit=crop&w=1100&q=80" alt="Modelo usando roupas premium" />
+            <div className={styles.heroBadge}>
+              <strong>Nova linha cápsula</strong>
+              <p>Texturas em linho e couro vegetal</p>
+            </div>
           </div>
         </section>
 
-        <section className={styles.productImageSection}>
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80" alt="Visual geral do produto" />
-        </section>
-
-        <section className={styles.ctaStrip}>
+        <section className={styles.cartPreview}>
           <div>
-            <h2>Garanta seu acesso com todos os bônus liberados</h2>
-            <p>Oferta exclusiva para quem confirmar a inscrição nesta semana.</p>
+            <h4>Carrinho ({cartItems.length})</h4>
+            {cartItems.length ? (
+              <ul className={styles.cartList}>
+                {cartItems.slice(-3).map((item, index) => (
+                  <li key={`${item}-${index}`}>{item}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>Seu carrinho está vazio. Adicione seus favoritos.</p>
+            )}
           </div>
-          <a href="#ofertas" className={styles.primaryButton}>
-            Quero garantir agora
-          </a>
+          {selectedProduct && (
+            <div className={styles.checkoutPlaceholder}>
+              <span>Preparando checkout para:</span>
+              <strong>{selectedProduct}</strong>
+              <small>Integração futura com checkout seguro.</small>
+            </div>
+          )}
         </section>
 
-        <section id="depoimentos" className={styles.testimonials}>
+        <section id="novidades" className={styles.categoriesSection}>
           <div className={styles.sectionHeader}>
-            <p>Depoimentos reais</p>
-            <h2>Resultados de quem aplicou o Mapa</h2>
+            <p>Encontre o seu estilo</p>
+            <h2>Categorias com curadoria exclusiva</h2>
           </div>
-          <div className={styles.testimonialGrid}>
-            {testimonials.map((item) => (
-              <article key={item.name} className={styles.testimonialCard}>
-                <div className={styles.avatar}>{item.avatar}</div>
-                <p className={styles.testimonialText}>“{item.text}”</p>
-                <div className={styles.testimonialMeta}>
-                  <strong>{item.name}</strong>
-                  <span>{item.location}</span>
+          <div className={styles.categoryGrid}>
+            {categories.map((category) => (
+              <article
+                key={category.name}
+                className={`${styles.categoryCard} ${highlightedCategory === category.name ? styles.categoryActive : ""}`}
+                style={{ backgroundImage: `url(${category.image})` }}
+              >
+                <div className={styles.categoryContent}>
+                  <h3>{category.name}</h3>
+                  <p>{category.description}</p>
+                  <button type="button" onClick={() => handleViewProducts(category.name)}>
+                    Ver produtos
+                  </button>
                 </div>
               </article>
             ))}
           </div>
+          <p className={styles.categoryNote}>Destaque atual: {highlightedCategory}</p>
         </section>
 
-        <section className={styles.modulesSection}>
+        <section className={styles.featuredSection}>
           <div className={styles.sectionHeader}>
-            <p>Conteúdo organizado</p>
-            <h2>O passo a passo completo dividido em módulos estratégicos</h2>
+            <p>Produtos em destaque</p>
+            <h2>Mais vendidos</h2>
           </div>
-          <div className={styles.modulesGrid}>
-            {modules.map((module) => (
-              <article key={module.tag} className={styles.moduleCard}>
-                <span className={styles.moduleTag}>{module.tag}</span>
-                <h3>{module.title}</h3>
-                <p>{module.description}</p>
-                <ul>
-                  {module.items.map((item) => (
-                    <li key={item}>{item}</li>
+          <div className={styles.featuredGroups}>
+            {featuredCollections.map((collection) => (
+              <div key={collection.id} id={collection.id} className={styles.featuredGroup}>
+                <div className={styles.groupHeader}>
+                  <h3>{collection.title}</h3>
+                  <p>{collection.description}</p>
+                </div>
+                <div className={styles.productGrid}>
+                  {collection.products.map((product) => (
+                    <article
+                      key={product.name}
+                      className={styles.productCard}
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => handleBuyNow(product.name)}
+                    >
+                      <img src={product.image} alt={product.name} />
+                      <div className={styles.productInfo}>
+                        <div>
+                          <h4>{product.name}</h4>
+                          <p>{product.description}</p>
+                        </div>
+                        <div className={styles.priceRow}>
+                          <span className={styles.oldPrice}>{product.oldPrice}</span>
+                          <strong className={styles.currentPrice}>{product.price}</strong>
+                        </div>
+                        <div className={styles.rating}>
+                          {Array.from({ length: 5 }).map((_, index) => (
+                            <span key={`${product.name}-star-${index}`}>{index < Math.round(product.rating) ? "★" : "☆"}</span>
+                          ))}
+                        </div>
+                        <div className={styles.productButtons}>
+                          <button
+                            type="button"
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              handleAddToCart(product.name);
+                            }}
+                          >
+                            Adicionar ao carrinho
+                          </button>
+                          <button
+                            type="button"
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              handleBuyNow(product.name);
+                            }}
+                          >
+                            Comprar agora
+                          </button>
+                        </div>
+                      </div>
+                    </article>
                   ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.insideSection}>
-          <div className={styles.sectionHeader}>
-            <p>Veja por dentro</p>
-            <h2>Tudo organizado em um portal intuitivo</h2>
-          </div>
-          <div className={styles.insideGrid}>
-            {insideContent.map((item) => (
-              <div key={item} className={styles.insideItem}>
-                <span>✔</span>
-                <p>{item}</p>
+                </div>
               </div>
             ))}
           </div>
         </section>
 
-        <section className={styles.audienceSection}>
-          <div className={styles.sectionHeader}>
-            <p>Para quem é</p>
-            <h2>O Mapa atende todo tipo de catequista</h2>
+        <section id="promocoes" className={styles.promotionalBlock}>
+          <div>
+            <p>Nova coleção disponível</p>
+            <h2>Peças escolhidas para quem gosta de estilo, conforto e personalidade.</h2>
           </div>
-          <div className={styles.audienceGrid}>
-            {audiences.map((item) => (
-              <article key={item.title} className={styles.audienceCard}>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.resourcesSection}>
-          <div className={styles.sectionHeader}>
-            <p>Materiais extras</p>
-            <h2>Ferramentas visuais prontas para aplicar nos encontros</h2>
-          </div>
-          <div className={styles.resourceGrid}>
-            {resources.map((resource) => (
-              <div key={resource.title} className={styles.resourceCard}>
-                <span>{resource.icon}</span>
-                <h3>{resource.title}</h3>
-                <p>{resource.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.productExplain}>
-          <div className={styles.sectionHeader}>
-            <p>Como funciona</p>
-            <h2>O passo a passo que guia toda a sua catequese</h2>
-          </div>
-          <div className={styles.steps}>
-            {productSteps.map((step) => (
-              <div key={step.title} className={styles.stepCard}>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.gallery}>
-          <div className={styles.sectionHeader}>
-            <p>Por dentro do portal</p>
-            <h2>Material visual pensado para catequistas</h2>
-          </div>
-          <div className={styles.galleryGrid}>
-            {galleryImages.map((image) => (
-              <div key={image} className={styles.galleryItem}>
-                <img src={image} alt="Material interno" />
-              </div>
-            ))}
-          </div>
+          <button type="button" onClick={() => scrollToSection("masculino")}>
+            Explorar coleção
+          </button>
         </section>
 
         <section className={styles.benefitsSection}>
           <div className={styles.sectionHeader}>
-            <p>Benefícios</p>
-            <h2>Você recebe ferramentas completas para aplicar agora</h2>
+            <p>Benefícios da loja</p>
+            <h2>Experiência premium do clique à entrega</h2>
           </div>
           <div className={styles.benefitGrid}>
-            {benefits.map((item) => (
-              <div key={item} className={styles.benefitCard}>
-                <span>•</span>
-                <p>{item}</p>
+            {benefits.map((benefit) => (
+              <div key={benefit} className={styles.benefitCard}>
+                <span>✓</span>
+                <p>{benefit}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section id="tudo-receber" className={styles.receiveSection}>
+        <section className={styles.testimonialsSection}>
           <div className={styles.sectionHeader}>
-            <p>Tudo o que você vai receber</p>
-            <h2>Pacote completo do Mapa do Catecismo</h2>
+            <p>O que nossos clientes dizem</p>
+            <h2>Feedback real de quem já comprou</h2>
           </div>
-          <div className={styles.receiveContent}>
-            <ul>
-              <li>Plano anual com + de 120 encontros detalhados</li>
-              <li>Treinamento completo gravado + atualizações</li>
-              <li>Planilhas de presença, progresso e sacramentos</li>
-              <li>Kit de materiais visuais editáveis</li>
-              <li>Plantões de dúvidas e suporte pelo WhatsApp</li>
-              <li>Comunidade exclusiva com catequistas do Brasil inteiro</li>
-            </ul>
-            <div className={styles.receiveImage}>
-              <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=1000&q=80" alt="Mockup do pacote" />
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.productMain}>
-          <div className={styles.sectionHeader}>
-            <p>Produto principal</p>
-            <h2>Mapa do Catecismo 2024</h2>
-          </div>
-          <div className={styles.productMainContent}>
-            <div>
-              <h3>Plano anual + portal completo</h3>
-              <p>
-                Estruturamos cada etapa da catequese com objetivos claros, atividades práticas, recursos audiovisuais e roteiros prontos para você aplicar imediatamente.
-              </p>
-              <ul>
-                <li>+ de 70 vídeos explicativos</li>
-                <li>Modelos editáveis e checklists</li>
-                <li>Suporte e atualizações futuras</li>
-              </ul>
-            </div>
-            <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80" alt="Mockup principal" />
-          </div>
-        </section>
-
-        <section className={styles.timelineSection}>
-          <div className={styles.sectionHeader}>
-            <p>Seu caminho</p>
-            <h2>Entre hoje e comece a aplicar imediatamente</h2>
-          </div>
-          <div className={styles.timelineList}>
-            {journeySteps.map((step, index) => (
-              <div key={step.title} className={styles.timelineItem}>
-                <div className={styles.timelineCircle}>{`0${index + 1}`}</div>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="bonus" className={styles.bonusWrapper}>
-          <div className={styles.sectionHeader}>
-            <p>Bônus exclusivos</p>
-            <h2>Presentes liberados para quem entra nesta turma</h2>
-          </div>
-          <div className={styles.bonusStack}>
-            {bonuses.map((bonus) => (
-              <article key={bonus.number} className={styles.bonusSection}>
-                <div className={styles.bonusNumber}>Bônus {bonus.number}</div>
-                <div className={styles.bonusContent}>
-                  <div>
-                    <h3>{bonus.title}</h3>
-                    <p>{bonus.description}</p>
-                    <span className={styles.bonusValue}>Valor: {bonus.value} • Você recebe gratuito</span>
-                  </div>
-                  <div className={styles.bonusImage}>
-                    <img src={bonus.image} alt={bonus.title} />
-                  </div>
+          <div className={styles.testimonialsGrid}>
+            {testimonials.map((testimonial) => (
+              <article key={testimonial.name} className={styles.testimonialCard}>
+                <div className={styles.testimonialStars}>
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <span key={`${testimonial.name}-rate-${index}`}>
+                      {index < Math.round(testimonial.rating) ? "★" : "☆"}
+                    </span>
+                  ))}
                 </div>
+                <p>{testimonial.comment}</p>
+                <strong>{testimonial.name}</strong>
               </article>
             ))}
           </div>
         </section>
 
-        <section className={styles.midCta}>
-          <h2>Entre agora e receba todos os bônus</h2>
-          <p>Oferta válida enquanto as vagas desta turma estiverem abertas.</p>
-          <a href="#ofertas" className={styles.primaryButton}>
-            Quero garantir meu acesso
-          </a>
+        <section className={styles.ctaFinal}>
+          <div>
+            <p>Seu próximo look está aqui.</p>
+            <h2>Escolha as suas peças favoritas e renove o seu estilo hoje.</h2>
+          </div>
+          <button type="button" onClick={() => scrollToSection("feminino")}>Comprar Agora</button>
         </section>
 
-        <section id="ofertas" className={styles.offerSection}>
+        <section id="contacto" className={styles.contactSection}>
           <div className={styles.sectionHeader}>
-            <p>Escolha sua oferta</p>
-            <h2>Decida como quer acessar o Mapa</h2>
+            <p>Fale conosco</p>
+            <h2>Canais de contacto e redes sociais</h2>
           </div>
-          <div className={styles.offerGrid}>
-            <article className={styles.basicOffer}>
-              <h3>Oferta Básica</h3>
-              <p className={styles.offerTag}>Acesso ao Mapa do Catecismo</p>
-              <ul>
-                <li>Portal completo</li>
-                <li>Materiais PDF e Canva</li>
-                <li>Suporte por 3 meses</li>
-              </ul>
-              <div className={styles.priceBlock}>
-                <span>De R$ 997</span>
-                <strong>Por 12x de R$ 48,70</strong>
-                <small>ou R$ 497 à vista</small>
-              </div>
-              <a href="https://pay.hotmart.com" className={styles.secondaryButton}>
-                Quero a oferta básica
-              </a>
-            </article>
-            <article className={styles.superOffer}>
-              <div className={styles.mostChosen}>Mais escolhida</div>
-              <h3>Super Oferta</h3>
-              <p className={styles.offerTag}>Mapa + 6 bônus exclusivos</p>
-              <ul>
-                <li>Acesso vitalício ao portal</li>
-                <li>Todos os bônus liberados</li>
-                <li>Suporte por 12 meses</li>
-                <li>Atualizações futuras</li>
-              </ul>
-              <div className={styles.priceBlock}>
-                <span>De R$ 1.597</span>
-                <strong>Por 12x de R$ 64,90</strong>
-                <small>ou R$ 647 à vista</small>
-              </div>
-              <a href="https://pay.hotmart.com" className={styles.primaryButton}>
-                Quero a super oferta
-              </a>
-              <p className={styles.secureNote}>Pagamento seguro • Acesso imediato</p>
-            </article>
-          </div>
-        </section>
-
-        <section className={styles.guarantee}>
-          <div className={styles.sectionHeader}>
-            <p>Garantia</p>
-            <h2>7 dias para testar sem risco</h2>
-          </div>
-          <p>
-            Se você entrar, acessar as aulas e perceber que o Mapa do Catecismo não é para você, basta enviar uma mensagem em até 7 dias e devolvemos 100% do valor investido. Sem letras miúdas.
-          </p>
-        </section>
-
-        <section className={styles.timelineSection}>
-          <div className={styles.sectionHeader}>
-            <p>Experiência guiada</p>
-            <h2>Suporte contínuo do primeiro encontro até a celebração final</h2>
-          </div>
-          <div className={styles.accordion}>
-            {journeySteps.map((step) => (
-              <div key={`${step.title}-accordion`} className={styles.timelineItem}>
-                <div className={styles.timelineCircle}>✓</div>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
+          <div className={styles.contactGrid}>
+            {contactInfo.map((item) => (
+              <div key={item.label}>
+                <span>{item.label}</span>
+                <p>{item.value}</p>
               </div>
             ))}
           </div>
-        </section>
-
-        <section className={styles.faq}>
-          <div className={styles.sectionHeader}>
-            <p>Perguntas frequentes</p>
-            <h2>Tire suas dúvidas antes de entrar</h2>
-          </div>
-          <div className={styles.accordion}>
-            {faq.map((item) => (
-              <div key={item.question} className={`${styles.accordionItem} ${openItem === item.question ? styles.open : ''}`}>
-                <button onClick={() => toggleItem(item.question)}>
-                  <span>{item.question}</span>
-                  <span>{openItem === item.question ? '-' : '+'}</span>
-                </button>
-                <div className={styles.accordionContent}>
-                  <p>{item.answer}</p>
-                </div>
-              </div>
+          <div className={styles.socialLinks}>
+            {socialLinks.map((link) => (
+              <button key={link} type="button">
+                {link}
+              </button>
             ))}
           </div>
-        </section>
-
-        <section className={styles.finalCta}>
-          <h2>Pronto para transformar sua catequese?</h2>
-          <p>Garanta o Mapa do Catecismo e conduza encontros inesquecíveis com segurança e organização.</p>
-          <a href="https://pay.hotmart.com" className={styles.primaryButton}>
-            Quero entrar agora
-          </a>
-          <span>Pagamento seguro • Acesso imediato liberado</span>
         </section>
       </main>
       <footer className={styles.footer}>
-        <p>© {new Date().getFullYear()} Mapa do Catecismo. Todos os direitos reservados.</p>
-        <p>Material independente. Não é afiliado a nenhuma diocese específica.</p>
+        <div className={styles.footerLinks}>
+          <a href="#inicio">Sobre nós</a>
+          <a href="#contacto">Contactos</a>
+          <a href="#">Política de privacidade</a>
+          <a href="#">Termos e condições</a>
+          <a href="#">Política de trocas e devoluções</a>
+        </div>
+        <p>© {new Date().getFullYear()} Lumière Moda. Todos os direitos reservados.</p>
       </footer>
     </div>
   );
